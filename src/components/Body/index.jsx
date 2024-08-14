@@ -1,6 +1,7 @@
 import React from 'react'
 import BodyButton from './BodyButton'
 import booksImage from '/books.png'
+import { Link } from 'react-router-dom'
 
 const Body = () => {
   return (
@@ -12,7 +13,9 @@ const Body = () => {
             <p className='text-white text-lg my-4'>
                 Faça troca de livros com o Library Tech
             </p>
-            <BodyButton>Cadastre-se</BodyButton>
+            <Link to='/cadastro'>
+                <BodyButton>Cadastre-se</BodyButton>
+            </Link>
         </div>
         <div className='justify-self-end'>
             <img src={booksImage} className='max-h-[60vh]' />
