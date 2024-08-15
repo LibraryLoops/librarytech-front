@@ -1,5 +1,5 @@
 import React from 'react'
-import BodyButton from './BodyButton'
+import Button from '../Button'
 import booksImage from '/books.png'
 import { Link } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ const Body = () => {
                 Faça troca de livros com o Library Tech
             </p>
             <Link to='/cadastro'>
-                <BodyButton>Cadastre-se</BodyButton>
+                <Button>Cadastre-se</Button>
             </Link>
         </div>
         <div className='justify-self-end'>
