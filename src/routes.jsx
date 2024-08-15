@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
-import RegisterTest from './pages/RegisterTest'
+import Register from './pages/Register'
 import { AuthProvider } from './contexts/authContext'
 import BookTest from './pages/BookTest'
 import Login from './pages/Login'
@@ -14,7 +14,7 @@ const routes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<RegisterTest />} />
+          <Route path="/cadastro" element={<Register />} />
           <Route path="/livros" element={<BookTest />} />
         </Routes>
       </AuthProvider>
