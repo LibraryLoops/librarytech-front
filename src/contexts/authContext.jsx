@@ -17,8 +17,12 @@ const AuthProvider = ({ children}) => {
     }
 
     const getInfoToken = () => {
-        const { id, email } = decoderToken(token);
-        return { id, email };
+        try {
+            const { id, email } = decoderToken(token);
+            return { id, email };
+        } catch (error) {
+            return {}
+        }
     }
 
     return(
