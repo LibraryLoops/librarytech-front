@@ -12,6 +12,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const { storageToken } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -19,12 +20,12 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = await loginAuth({ email, password });
-        if (token) {
-            storageToken(token.accessToken);
-            navigate('/livros');
-        } else {
-            alert('Email ou senha incorretos');
+        try {
+            const token = await loginAuth({ email, password });
+                storageToken(token.accessToken);
+                navigate('/livros');            
+        } catch (err) {
+            setError("Email ou senha inválidos");
         }
     }
 
@@ -44,6 +45,7 @@ const Login = () => {
                         <InputLogin type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="E-mail" />
                         <InputLogin type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder="Senha" />
                         <Button>Entrar</Button>
+                        {error && <p className="text-red-600 font-bold text-center">{error}</p>}
                     </form>
                 </div>
             </div>
