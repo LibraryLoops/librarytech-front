@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SearchForm from "../components/SearchForm";
 import BookCard from "../components/BookCard";
 import SmallButton from "../components/SmallButton";
@@ -6,17 +6,37 @@ import {
   ArrowRightEndOnRectangleIcon,
   PlusCircleIcon,
 } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../contexts/authContext";
+import { getUserById } from "../services/usuarios";
 
 const BookPage = () => {
-  const iconLogout = (
-    <ArrowRightEndOnRectangleIcon className="h-6 w-6 text-white" />
-  );
+  const iconLogout = <ArrowRightEndOnRectangleIcon className="h-6 w-6 text-white" />
   const iconPlus = <PlusCircleIcon className="h-6 w-6" />;
+
+  const navigate = useNavigate();
+  const { token, getInfoToken, removeToken } = useContext(AuthContext);
+  const { id, email } = getInfoToken();
+  const [user, setUser] = useState({});
+
+  const getUser = async () => {
+    const user = await getUserById(id, token);
+    setUser(user);
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [id])
+
+  const handleLogout = () => {
+    removeToken();
+    navigate('/');
+  }
+
   return (
     <section className="bg-stone-900">
       <div className="absolute top-5 right-5">
-        <SmallButton color="bg-red-700 hover:bg-red-500" icon={iconLogout}>
+        <SmallButton color="bg-red-700 hover:bg-red-500" icon={iconLogout} onClick={handleLogout}>
           Logout
         </SmallButton>
       </div>
@@ -24,6 +44,9 @@ const BookPage = () => {
         <h1 className="text-5xl text-sky-100 font-bold my-5 text-center">
           Acervo de Livros
         </h1>
+        <h2 className="text-2xl text-sky-100 font-bold my-5 text-center">
+          Olá, {user.nome}
+        </h2>
         <Link
           to="/livros/novo"
           className="flex justify-center items-center h-20"
