@@ -1,25 +1,30 @@
-import React from 'react';
-import FilterCategory from '../components/FilterCategory';
-import SearchForm from '../components/SearchForm';
-import BookCard from '../components/BookCard';
+import React from "react";
+import SearchForm from "../components/SearchForm";
+import BookCard from "../components/BookCard";
+import SmallButton from "../components/SmallButton";
+import { ArrowRightEndOnRectangleIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 
 const BookPage = () => {
+
+  const iconLogout = <ArrowRightEndOnRectangleIcon className="h-6 w-6 text-white" />
+  const iconPlus = <PlusCircleIcon className="h-6 w-6" />
   return (
-    <>
-      <section className='flex flex-col bg-stone-700'>
-        <h1 className="text-7xl text-sky-50 font-bold mb-5 mt-5">Acervo de Livros</h1>
-        <div>
+    <section className="bg-stone-900">
+      <div className="absolute top-5 right-5">
+        <SmallButton color="bg-red-700 hover:bg-red-500" icon={iconLogout}>
+          Logout 
+        </SmallButton>
+      </div>
+      <section className="flex flex-col">
+        <h1 className="text-5xl text-sky-100 font-bold my-5 text-center">
+          Acervo de Livros
+        </h1>
+        <div className="flex justify-center items-center h-20">
           <SearchForm />
-        </div>
-        <div className='flex justify-center '>
-          <FilterCategory nameFilter="Todos" imageUrl="https://picsum.photos/200" />
-          <FilterCategory nameFilter="Fantasia" imageUrl="https://picsum.photos/200" />
-          <FilterCategory nameFilter="Ficção" imageUrl="https://picsum.photos/200" />
-          <FilterCategory nameFilter="Romance" imageUrl="https://picsum.photos/200" />
-          <FilterCategory nameFilter="Manga" imageUrl="https://picsum.photos/200" />
+          <SmallButton icon={iconPlus}>Novo livro</SmallButton>
         </div>
       </section>
-      <section className="mt-8 mx-10 justify-center flex flex-wrap  gap-3 bg-stone-700">
+      <section className=" mx-10 flex-wrap gap-5 bg-stone-800 p-6 grid grid-cols-4 rounded-lg">
         <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
@@ -38,57 +43,57 @@ const BookPage = () => {
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
-                <BookCard
+        <BookCard
           imageUrl="https://picsum.photos/200"
           title="O Senhor dos Anéis"
           author="J.R.R. Tolkien"
           rating={4}
         />
       </section>
-    </>
-  )
-}
+    </section>
+  );
+};
 
 export default BookPage;
