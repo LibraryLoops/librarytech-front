@@ -119,8 +119,6 @@ Para saber como rodar o Backend (API), acesse esse [link](https://github.com/Lib
 
 ### 🎲 Rodando o FrontEnd
 
-Para saber como rodar o Backend (API), acesse esse [link](https://github.com/LibraryLoops/entrega2-api).  
-
 ```bash
 
 # Clone este repositório
