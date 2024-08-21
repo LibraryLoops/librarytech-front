@@ -133,7 +133,7 @@ $ cd librarytech-front
 $ npm install
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run start
+$ npm run dev
 
 # A aplicação será aberta na porta:5173 - acesse http://localhost:5173
 
