@@ -42,9 +42,9 @@
 
 • <a  href="#-entregas-do-projeto">Entregas do Projeto</a>
 
-• <a  href="#-como-executar-o-projeto">Como executar</a>
+• <a  href="#-layout">Layout</a>
 
-• <a  href="#-endpoints">Endpoints</a>
+• <a  href="#-como-executar-o-projeto">Como executar</a>
 
 • <a  href="#-tecnologias">Tecnologias</a>
 
@@ -95,11 +95,9 @@ O layout da aplicação está disponível no Figma:
 ### Web
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Home.png" width="400px">
-    <div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: center;">
-        <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Login.png" width="200px">
-        <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Cadastro.png" width="200px">
-    </div>
+  <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Home.png" width="40%">
+  <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Login.png" width="25%" align="top">
+  <img alt="LibraryTech" title="#LibraryTech" src="./src/assets/Cadastro.png" width="25%" align="top">
 </p>
 
 
