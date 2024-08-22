@@ -1,15 +1,16 @@
 import React from 'react';
 import SmallButton from '../SmallButton';
 
+const BookCard = ({ imageUrl, title, author, rating, user, onEdit, onDelete, showDeleteButton }) => {
 
-const BookCard = ({ imageUrl, title, author, rating }) => {
+  
   return (
-    <div className="max-w-sm bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-4">
+    <div className="max-w-sm bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-5">
       {/* flex flex-col justify-center bg-stone-500 shadow-md p-2 */}
       <img 
         src={imageUrl} 
         alt={title} 
-        className="w-full h-48 object-cover rounded-md mb-4"
+        className="w-full h-auto object-cover rounded-md mb-4"
       />
       <div className="p-4">
         <div>
@@ -27,10 +28,17 @@ const BookCard = ({ imageUrl, title, author, rating }) => {
           </div>
           <h2 className="text-xl text-sky-100 font-bold mb-2">{title}</h2>
           <p className="text-sky-200">{author}</p>
+          <p className="text-sky-300">Adicionado por {user}</p>
         </div>
         <div className='flex justify-center gap-5 pt-3'>
-          <SmallButton color='bg-green-400 hover:bg-green-600'>Editar</SmallButton>
-          <SmallButton color='bg-red-400 hover:bg-red-600'>Excluir</SmallButton>
+          {showDeleteButton && (
+            <>
+            <SmallButton color='bg-green-400 hover:bg-green-600' onClick={onEdit}>Editar</SmallButton>
+            <SmallButton color='bg-red-400 hover:bg-red-600' onClick={onDelete}>
+              Excluir
+            </SmallButton>
+          </>
+          )}
         </div>
       </div>
     </div>

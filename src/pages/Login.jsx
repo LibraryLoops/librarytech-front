@@ -41,10 +41,9 @@ const Login = () => {
                     </div>
                     <form onSubmit={handleSubmit} className="flex flex-col m-5 p-5">
                         <p className="text-white text-center">Não tem uma conta? <Link to="/cadastro"><span className="text-gray-500">Criar conta</span></Link> </p>
-
                         <InputLogin type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="E-mail" />
                         <InputLogin type="password" value={password} onChange={(e) => { setPassword(e.target.value) }} placeholder="Senha" />
-                        <Button>Entrar</Button>
+                        <Button rounded='rounded-lg' size='large'>Entrar</Button>
                         {error && <p className="text-red-600 font-bold text-center">{error}</p>}
                     </form>
                 </div>
