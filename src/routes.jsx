@@ -9,7 +9,6 @@ import RegisterBook from './pages/RegisterBook'
 import ProtectedRoute from './pages/ProtectedRoute'
 import BookUser from './pages/BookUser'
 
-
 const routes = () => {
 
   return (
