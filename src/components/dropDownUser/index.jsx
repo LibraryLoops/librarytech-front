@@ -25,7 +25,7 @@ const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
     <div className="relative inline-block text-left" ref={dropdownRef}>
       {isOpen && (
         <div 
-        className={`absolute right-0 mt-7 w-48 bg-slate-900  rounded-md shadow-lg transition-transform transition-opacity duration-300 ease-in-out ${
+        className={`absolute right-0 mt-7 w-48 bg-slate-900  rounded-md shadow-lg transition-transform duration-300 ease-in-out ${
             isOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
           }`}
           >
