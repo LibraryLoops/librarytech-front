@@ -127,6 +127,9 @@ $ git clone git@github.com:LibraryLoops/librarytech-front.git
 # Acesse a pasta do projeto no seu terminal/cmd
 $ cd librarytech-front
 
+# Criar um arquivo .env na raiz do projeto e incluir a linha
+$ VITE_API_URL=http://localhost:3000
+
 # Instale as dependências
 $ npm install
 
@@ -219,7 +222,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 [![Linkedin Badge](https://img.shields.io/badge/-ThiagoBatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/thiago-ff-batista/)](https://www.linkedin.com/in/thiago-ff-batista/)
 [![Github Badge](https://img.shields.io/badge/-ThiagoBatista-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/THIAGOFELIPEFEI)](https://github.com/THIAGOFELIPEFEI)
-[![Gmail Badge](https://img.shields.io/badge/-thiagodexterpes@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:thiagodexterpes@gmail.com@gmail.com)](mailto:thiagodexterpes@gmail.com)
+[![Gmail Badge](https://img.shields.io/badge/-thiagodexterpes@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:thiagodexterpes@gmail.com)](mailto:thiagodexterpes@gmail.com)
 
 <a  href="https://github.com/lucio-adriano">
 
@@ -231,5 +234,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 [![Linkedin Badge](https://img.shields.io/badge/-AdrianoLucio-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/adrianolucio/)](https://www.linkedin.com/in/adrianolucio/)
 [![Github Badge](https://img.shields.io/badge/-AdrianoLucio-000000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/lucio-adriano)](https://github.com/lucio-adriano)
+[![Gmail Badge](https://img.shields.io/badge/-lucio.adriano@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:lucio.adriano@gmail.com)](mailto:thiagodexterpes@gmail.com)
 
 ---
