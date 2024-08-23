@@ -1,12 +1,13 @@
 import React from 'react';
 import SmallButton from '../SmallButton';
+import NoImg from '/noImg.png';
 
 const BookList = ({ imageUrl, title, author, rating, user, onEdit, onDelete, showDeleteButton }) => {
   return (
     <div className=" flex flex-col bg-gray-800 hover:bg-gray-700 rounded-lg shadow-lg transition duration-300 ease-in-out p-2 ">
       <div className="flex items-center mb-4">
         <img 
-          src={imageUrl} 
+          src={imageUrl=="" ? NoImg : imageUrl}  
           alt={title} 
           className="w-20 h-20 object-cover rounded-md mr-4 flex-shrink-0"
         />
