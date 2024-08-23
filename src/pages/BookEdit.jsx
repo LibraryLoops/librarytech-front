@@ -1,19 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { updateBook } from '../services/books'; 
+import { getAllBooks, updateBook } from '../services/books'; 
 import { AuthContext } from '../contexts/authContext';
 
 const BookEdit = ({ book: initialBook, closeEdit, onBookUpdate  }) => {
 
   const [titulo, setTitulo] = useState(initialBook.titulo || '');
   const [autor, setAutor] = useState(initialBook.autor || '');
+  const [linkCapa, setLinkCapa] = useState(initialBook.linkCapa || '');
+  const [editora, setEditora] = useState(initialBook.editora || '');
+  const [genero, setGenero] = useState(initialBook.genero || '');
+  const [paginas, setPaginas] = useState(initialBook.paginas || null);
   const { token } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-    const updatedBook = await updateBook(initialBook.id, token, { titulo, autor });
-    onBookUpdate(updatedBook); // nao ta funcionando
+    const updatedBook = await updateBook(initialBook.id, token, { titulo, autor, linkCapa, editora, genero, paginas });
+    onBookUpdate(updatedBook);
       closeEdit(); 
     } catch (error) {
       console.error('Error updating book:', error);
@@ -62,6 +66,62 @@ const BookEdit = ({ book: initialBook, closeEdit, onBookUpdate  }) => {
                 value={autor}
                 onChange={(e) => setAutor(e.target.value)}
                 placeholder="Autor"
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex-1 px-4 bg-slate-600 border border-transparent rounded-lg flex items-center gap-2">
+              <div/>
+              <input
+                type="text"
+                name="linkCapa"
+                value={linkCapa || ""}
+                onChange={(e) => setLinkCapa(e.target.value)}
+                placeholder="Link da Capa"
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="flex-1 px-4 bg-slate-600 border border-transparent rounded-lg flex items-center gap-2">
+              <div/>
+              <input
+                type="text"
+                name="paginas"
+                value={paginas || null}
+                onChange={(e) => setPaginas(e.target.value)}
+                placeholder="Número de páginas"
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              />
+            </div>
+            </div>
+            
+            <div className="flex items-center gap-2">
+            <div className="flex-1 px-4 bg-slate-600 border border-transparent rounded-lg flex items-center gap-2">
+              <div/>
+              <input
+                type="text"
+                name="editora"
+                value={editora || ''}
+                onChange={(e) => setEditora(e.target.value)}
+                placeholder="Editora"
+                className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
+              />
+            </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+            <div className="flex-1 px-4 bg-slate-600 border border-transparent rounded-lg flex items-center gap-2">
+              <div/>
+              <input
+                type="text"
+                name="genero"
+                value={genero ||''}
+                onChange={(e) => setGenero(e.target.value)}
+                placeholder="Gênero"
                 className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"
               />
             </div>
