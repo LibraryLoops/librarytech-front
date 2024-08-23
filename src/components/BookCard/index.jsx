@@ -7,9 +7,8 @@ const BookCard = ({ imageUrl, title, author, rating, user, onEdit, onDelete, sho
   
   return (
     <div className="max-w-sm bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-5">
-      {/* flex flex-col justify-center bg-stone-500 shadow-md p-2 */}
       <img 
-        src={imageUrl==null ? imageUrl : NoImg} 
+        src={imageUrl=="" ? NoImg : imageUrl} 
         alt={title} 
         className="w-full h-auto object-cover rounded-md mb-4"
       />
