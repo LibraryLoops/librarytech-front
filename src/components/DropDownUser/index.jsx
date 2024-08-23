@@ -35,13 +35,10 @@ const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
             }`}
         >
           <div className="py-1">
-          <Link className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400" to={`/usuarios/${id}`} >Configurações </Link>
-            {/* <a href={`/usuarios/:${id}`}
+            <Link
               className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400"
-            >
-                Configurações
- 
-            </a> */}
+              to={`/usuarios/${id}`} >Editar 
+            </Link>
             <a
               onClick={logOut}
               className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400"
