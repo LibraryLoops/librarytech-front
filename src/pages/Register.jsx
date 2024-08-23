@@ -70,7 +70,7 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button>Cadastrar</Button>
+            <Button rounded='rounded-lg' size='large'>Cadastrar</Button>
             {error && error.map((err, index) => (
               <p key={index} className="text-red-600 font-bold text-center">{err.mensagem}</p>
             ))}

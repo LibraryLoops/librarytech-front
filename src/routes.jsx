@@ -7,7 +7,7 @@ import Login from './pages/Login'
 import BookPage from './pages/BookPage'
 import RegisterBook from './pages/RegisterBook'
 import ProtectedRoute from './pages/ProtectedRoute'
-import NotFound from './pages/NotFound'
+import BookUser from './pages/BookUser'
 
 const routes = () => {
 
@@ -20,7 +20,7 @@ const routes = () => {
           <Route path="/cadastro" element={<Register />} />
           <Route path="/livros" element={<ProtectedRoute component={BookPage} />} />
           <Route path="/livros/novo" element={<ProtectedRoute component={RegisterBook} />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path='/usuarios/livros' element={<ProtectedRoute component={BookUser} />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
