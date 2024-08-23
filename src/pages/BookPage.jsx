@@ -159,8 +159,8 @@ const BookPage = () => {
               X
             </Button>
             <Link className="flex justify-start mt-20" to="/">
-              <ArrowLeftIcon className="h-10 w-10 text-zinc-900" />
-              <HomeIcon className="h-10 w-10 text-zinc-900" />
+              <ArrowLeftIcon className="h-10 w-10 text-gray-400" />
+              <HomeIcon className="h-10 w-10 text-gray-400" />
             </Link>
             <h2 className="text-2xl text-sky-100 font-bold my-5 text-left">
               Olá, {user.nome}
