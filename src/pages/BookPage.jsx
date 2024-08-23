@@ -126,12 +126,15 @@ const BookPage = () => {
     navigate("/");
   };
 
-  // nao ta funcionando
   const handleBookUpdate = (updatedBook) => {
     setBooks(
       books.map((book) => (book.id === updatedBook.id ? updatedBook : book))
     );
   };
+
+  useEffect(() => {
+    getBooks();
+  }, [currentBook] );
 
   return (
     <section className="flex overflow-hidden bg-stone-900 ">
@@ -284,7 +287,7 @@ const BookPage = () => {
           book={currentBook}
           closeEdit={closeEditInput}
           onBookUpdate={handleBookUpdate}
-        /> // esse onBookUpdate nao ta funcionando
+        />
       )}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex justify-center items-center">
