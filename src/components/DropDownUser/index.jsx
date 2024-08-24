@@ -1,4 +1,8 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import decoderToken from '../../utils/decoderToken';
+
+
 
 const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
   const dropdownRef = useRef(null);
@@ -8,8 +12,10 @@ const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
       closeDropDownMenu();
     }
   };
-
+  
+  const {id} = decoderToken(localStorage.getItem('token'));
   useEffect(() => {
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
@@ -24,18 +30,15 @@ const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
       {isOpen && (
-        <div 
-        className={`absolute right-0 mt-7 w-48 bg-slate-900  rounded-md shadow-lg transition-transform duration-300 ease-in-out ${
-            isOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
-          }`}
-          >
+        <div
+          className={`absolute right-0 mt-7 w-48 bg-slate-900  rounded-md shadow-lg transition-transform duration-300 ease-in-out ${isOpen ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-2'
+            }`}
+        >
           <div className="py-1">
-            <a
-              href="#logout"
+            <Link
               className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400"
-            >
-              Configurações
-            </a>
+              to={`/usuarios/${id}`} >Editar 
+            </Link>
             <a
               onClick={logOut}
               className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400"
