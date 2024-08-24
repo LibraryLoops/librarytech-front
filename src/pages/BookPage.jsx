@@ -38,6 +38,7 @@ const BookPage = () => {
   const [user, setUser] = useState({});
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [bookToDelete, setBookToDelete] = useState(null);
+  const [isScreenMd, setIsScreenMd] = useState(window.innerWidth >= 768);
 
   const getBooks = async () => {
     try {
@@ -83,6 +84,25 @@ const BookPage = () => {
   const closeSideBar = () => {
     setIsSideBarOpen(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsScreenMd(window.innerWidth >= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); 
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isScreenMd) {
+      setIsSideBarOpen(true); 
+    } else {
+      setIsSideBarOpen(false); 
+    }
+  }, [isScreenMd]);
 
   const openDeleteModal = (bookId) => {
     setBookToDelete(bookId);
@@ -134,29 +154,22 @@ const BookPage = () => {
 
   useEffect(() => {
     getBooks();
-  }, [currentBook] );
+  }, [currentBook]);
 
   return (
     <section className="flex overflow-hidden bg-stone-900 ">
-      <Bars3Icon
-        onClick={() => setIsSideBarOpen(!isSideBarOpen)}
-        className={`fixed top-10 left-4 z-50 p-2 text-white bg-sky-700 rounded-full cursor-pointer transition-transform duration-300 ${
-          isSideBarOpen ? "w-10 h-10" : "w-8 h-8"
-        }`}
-        style={{ transform: isSideBarOpen ? "rotate(0deg)" : "rotate(180deg)" }}
-      />
       {isSideBarOpen && (
         <aside
-        className={`w-64 bg-stone-800 text-white flex-shrink-0 h-screen transition-transform duration-300 ${
-          isSideBarOpen ? "translate-x-0" : "-translate-x-64"
-        }`}
+          className={`w-64 bg-stone-800 text-white flex-shrink-0 h-screen transition-transform duration-300 ${isSideBarOpen ? "translate-x-0" : "-translate-x-64"
+            }`}
         >
-          <div className="p-4 bg-stone-800">
+          <div className="p-4 mt-3 bg-stone-800">
             <Button
               onClick={closeSideBar}
               color="bg-red-500 hover:bg-red-600"
               tooltip="Fechar"
               size="small"
+              top="14"
               className="absolute top-10 right-4 text-white rounded-full"
             >
               X
@@ -214,71 +227,95 @@ const BookPage = () => {
                   </div>
                 ))}
             </section>
+            <div className="lg:hidden p-4 mt-40 bg-stone-800">
+              <a
+                href="#configuracoes"
+                className="block px-4 py-2 text-sm text-slate-400 hover:text-sky-400"
+              >
+                Configurações
+              </a>
+              <button
+                onClick={handleLogout}
+                className="block px-4 py-2 text-sm text-red-500 hover:text-sky-400 w-full text-left cursor-pointer"
+              >
+                Sair
+              </button>
+            </div>
           </div>
         </aside>
       )}
       <main className={`flex-1 transition-all duration-300 bg-stone-900 p-6 flex flex-col`}>
-        <div className="absolute top-10 right-5 flex items-center space-x-2">
-          <div className="flex items-center justify-center h-10 w-10 rounded-full bg-stone-700">
-            <UserCircleIcon className="h-8 w-8 text-sky-700" />
-          </div>
-          <div className="flex items-center justify-center h-8 w-8 rounded-full bg-stone-800">
-            {isDropDownOpen ? (
-              <ChevronUpIcon
-                onClick={() => closeDropDown()}
-                className="h-5 w-5 text-sky-700 cursor-pointer"
-              />
-            ) : (
-              <ChevronDownIcon
-                onClick={() => openDropDown()}
-                className="h-5 w-5 text-sky-700 cursor-pointer"
-              />
-            )}
-            {isDropDownOpen && (
-              <UserDropDown
-                isOpen={isDropDownOpen}
-                closeDropDownMenu={closeDropDown}
-                logOut={() => handleLogout()}
-              />
-            )}
-          </div>
-        </div>
-
         <section className="flex flex-col">
-          <div className="flex justify-center items-center h-20">
+          <div className="flex justify-center items-center gap-8">
+            <div>
+              <Bars3Icon
+                onClick={() => setIsSideBarOpen(!isSideBarOpen)}
+                className={`fixed top-14 left-4 z-50 p-2 text-white bg-sky-700 rounded-full cursor-pointer transition-transform duration-300 ${isSideBarOpen ? "w-10 h-10" : "w-8 h-8"
+                  }`}
+                style={{ transform: isSideBarOpen ? "rotate(0deg)" : "rotate(180deg)" }}
+              />
+            </div>
             <SearchForm
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+
             <Link to="/livros/novo">
               <SmallButton icon={iconPlus}>Novo livro</SmallButton>
             </Link>
+            <div className="top-10 right-5 hidden lg:flex items-center space-x-2">
+              <div className="flex items-center justify-center h-10 w-10 rounded-full bg-stone-700 ml-3">
+                <UserCircleIcon className="h-8 w-8 text-sky-700" />
+              </div>
+              <div className="flex items-center justify-center h-8 w-8 rounded-full bg-stone-800">
+                {isDropDownOpen ? (
+                  <ChevronUpIcon
+                    onClick={() => closeDropDown()}
+                    className="h-5 w-5 text-sky-700 cursor-pointer"
+                  />
+                ) : (
+                  <ChevronDownIcon
+                    onClick={() => openDropDown()}
+                    className="h-5 w-5 text-sky-700 cursor-pointer"
+                  />
+                )}
+                {isDropDownOpen && (
+                  <UserDropDown
+                    isOpen={isDropDownOpen}
+                    closeDropDownMenu={closeDropDown}
+                    logOut={() => handleLogout()}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </section>
-        <section className="mx-10 flex-wrap gap-5 bg-stone-800 p-6 grid grid-cols-4 rounded-lg">
-          {filterBooks.length > 0 ? (
-            filterBooks.map((book) => (
-              <div key={book.id}>
-                <BookCard
-                  imageUrl={book.linkCapa}
-                  title={book.titulo}
-                  author={book.autor}
-                  rating={book.avaliacao}
-                  user={users[book.usuarioId]}
-                  showDeleteButton={book.usuarioId === id}
-                  onEdit={() => openEditInput(book)}
-                  onDelete={() => openDeleteModal(book.id)}
-                />
+        <section className="mx-4 sm:mx-6 md:mx-12 p-4 sm:p-6 bg-stone-800 rounded-lg">
+          <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 ">
+            {filterBooks.length > 0 ? (
+              filterBooks.map((book) => (
+                <div key={book.id}>
+                  <BookCard
+                    imageUrl={book.linkCapa}
+                    title={book.titulo}
+                    author={book.autor}
+                    rating={book.avaliacao}
+                    user={users[book.usuarioId]}
+                    showDeleteButton={book.usuarioId === id}
+                    onEdit={() => openEditInput(book)}
+                    onDelete={() => openDeleteModal(book.id)}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="text-center col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-4">
+                <p className="text-xl text-white">
+                  Nenhum livro encontrado. Adicione um novo livro para começar!
+                </p>
               </div>
-            ))
-          ) : (
-            <div className="text-center col-span-4">
-              <p className="text-xl text-white">
-                Nenhum livro encontrado. Adicione um novo livro para começar!
-              </p>
-            </div>
-          )}
+            )}
+          </div>
         </section>
       </main>
 
@@ -290,9 +327,9 @@ const BookPage = () => {
         />
       )}
       {isDeleteModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex justify-center items-center">
-          <div className="bg-slate-900 p-6 rounded-lg shadow-lg">
-            <p className="text-xl text-white">
+        <div className="fixed inset-0 bg-black/60 flex justify-center items-center p-4">
+          <div className="bg-slate-900 p-6 rounded-lg shadow-lg max-w-sm w-full">
+            <p className="text-xl text-white mb-4">
               Você tem certeza que deseja excluir este livro?
             </p>
             <div className="flex justify-start gap-4 mt-4">
