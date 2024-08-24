@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom'
 const Body = () => {
   return (
     <main className='flex justify-between pl-40 mt-10'>
-        <div className='max-w-[70%] justify-self-center text-left px-[10%] mt-20'>
-            <h1 className='text-white text-4xl'>
+         <div className='text-center lg:text-left max-w-xl lg:max-w-2xl px-4 lg:px-0'>
+            <h1 className='text-white text-2xl md:text-4xl lg:text-5xl font-bold'>
                 Transforme seus livros em novas oportunidades de leitura
             </h1>
             <p className='text-white text-lg my-4'>

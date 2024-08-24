@@ -6,8 +6,8 @@ const BookCard = ({ imageUrl, title, author, rating, user, onEdit, onDelete, sho
 
   
   return (
-    <div className="max-w-sm bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-5">
-      <img 
+ <div className="bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-4 sm:p-5">    
+        <img 
         src={imageUrl=="" ? NoImg : imageUrl} 
         alt={title} 
         className="w-full h-auto object-cover rounded-md mb-4"
@@ -30,7 +30,7 @@ const BookCard = ({ imageUrl, title, author, rating, user, onEdit, onDelete, sho
           <p className="text-sky-200">{author}</p>
           <p className="text-sky-300">Adicionado por {user}</p>
         </div>
-        <div className='flex justify-center gap-5 pt-3'>
+        <div className='flex flex-col sm:flex-row justify-center gap-4 mt-3'>
           {showDeleteButton && (
             <>
             <SmallButton color='bg-green-400 hover:bg-green-600' onClick={onEdit}>Editar</SmallButton>

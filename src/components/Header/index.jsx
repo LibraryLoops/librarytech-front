@@ -7,7 +7,7 @@ const Header = () => {
   const { token } = useContext(AuthContext)
 
   return (
-    <header className='w-full h-auto pt-12 px-20 flex justify-end items-center gap-8 pb-10'>
+    <header className='w-full h-auto pt-12 px-4 sm:px-8 md:px-12 lg:px-20 flex flex-wrap justify-end items-center gap-4 sm:gap-6 md:gap-8 pb-10'>
         <Link to={token ? '/livros' : '/login'}>
           <p className='text-white text-lg cursor-pointer hover:underline'>
               Entrar
