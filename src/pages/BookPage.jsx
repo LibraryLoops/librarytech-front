@@ -236,7 +236,7 @@ const BookPage = () => {
               </a>
               <button
                 onClick={handleLogout}
-                className="block px-4 py-2 text-sm text-red-500 hover:text-sky-400 w-full text-left"
+                className="block px-4 py-2 text-sm text-red-500 hover:text-sky-400 w-full text-left cursor-pointer"
               >
                 Sair
               </button>

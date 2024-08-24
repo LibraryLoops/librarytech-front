@@ -41,7 +41,7 @@ const UserDropDown = ({ isOpen, closeDropDownMenu, logOut }) => {
             </Link>
             <a
               onClick={logOut}
-              className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400"
+              className="block px-4 py-2 text-sm text-gray-700 hover:text-sky-400 cursor-pointer"
             >
               Sair
             </a>
