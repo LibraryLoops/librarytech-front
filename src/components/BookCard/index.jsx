@@ -6,14 +6,14 @@ const BookCard = ({ imageUrl, title, author, rating, user, onEdit, onDelete, sho
 
   
   return (
- <div className="bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-4 sm:p-5">    
+ <div className="bg-stone-600 hover:bg-stone-700 border border-gray-200 rounded-lg shadow-md p-4 sm:p-5 flex flex-col h-full">    
         <img 
         src={imageUrl=="" ? NoImg : imageUrl} 
         alt={title} 
-        className="w-full h-auto object-cover rounded-md mb-4"
+        className="w-full h-48 object-contain rounded-md mb-4"
       />
       <div className="p-4">
-        <div>
+        <div className='flex-1'>
           <div className="flex mb-2">
             {[...Array(5)].map((_, i) => (
               <svg
